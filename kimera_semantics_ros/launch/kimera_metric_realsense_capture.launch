@@ -22,7 +22,8 @@
   <arg name="left_cam_topic"            default="/camera/infra1/image_rect_raw"/> -->
   <arg name="left_cam_info_topic"       default="/depth_camera/color/camera_info"/>
   <arg name="left_cam_topic"            default="/depth_camera/color/image_raw"/>
-  <arg name="left_cam_depth_topic" 	default="/kimera/depth_registered/image_rect_raw"/>
+  <!--arg name="left_cam_depth_topic" 	default="/kimera/depth_registered/image_rect_raw"/-->
+  <arg name="left_cam_depth_topic" 	default="/depth_camera/aligned_depth_to_color/image_raw"/>
 
   <group if="$(arg register_color)">
    <!-- Additional topics necessary for transforming to RGB frame -->
@@ -88,7 +89,8 @@
    <arg name="left_cam_depth_topic" 	value="$(arg left_cam_depth_topic)"/>   
 
    <!-- VoxBlox parameters -->
-   <arg name="voxel_size"            value="0.02"/>
-   <arg name="voxel_carving"            value="false"/>
+   <arg name="voxel_size"            value="0.01"/>
+   <arg name="max_ray_length_m"            value="3"/>
+   <arg name="voxel_carving"            value="true"/>
   </include>
 </launch>
